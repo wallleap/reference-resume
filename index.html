@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="//www.w3schools.com/favicon.ico" type="image/x-icon">
+  <title>luwang-简历</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --body-bg: #f5f5f5;
+      --main-bg: #fff;
+      --header-bg: #464646;
+      --primary: #0d6ad4;
+      --f-color: #666;
+      --h1-color: #fff;
+      --h3-color: #333;
+      --info-color: #aaa;
+      --border-color: rgba(0,0,0,.1);
+      --resume-w: 900px;
+      --header-h: 154;
+      --aside-w: 262;
+      --avatar-w: 160;
+      --base-f: 14px/1.5 Arial;
+      --h1-fz: 24px;
+      --h2-fz: 20px;
+      --h3-fz: 16px;
+    }
+
+    body {
+      width: 100%;
+      background-color: var(--body-bg);
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    section {
+      margin: 2em 2em;
+    }
+
+    a {
+      position: relative;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a::after {
+      content: '';
+      position: absolute;
+      bottom: -0.3em;
+      left: 0;
+      width: 100%;
+      border-bottom: 1px dashed var(--primary);
+    }
+
+    a:hover::after {
+      border-bottom: 1px solid var(--primary);
+    }
+
+    #resume {
+      max-width: var(--resume-w);
+      margin: 20px auto;
+      background-color: var(--main-bg);
+      font: var(--base-f);
+      color: var(--f-color);
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: var(--header-bg);
+      height: calc(var(--header-h) * 1px);
+    }
+
+    header>.avatar {
+      display: none;
+    }
+
+    header>h1 {
+      margin-top: calc((var(--header-h) - 90) * 1px);
+      color: var(--h1-color);
+      text-align: center;
+      font-size: var(--h1-fz);
+    }
+
+    header>.info {
+      display: flex;
+      color: var(--info-color);
+      margin-top: .5em;
+    }
+
+    header>.info>li:not(:last-of-type) {
+      margin-right: 1em;
+    }
+
+    main {
+      display: flex;
+    }
+
+    aside {
+      width: calc(var(--aside-w)*1px);
+    }
+
+    .avatar {
+      width: calc(var(--avatar-w)* 1px);
+      height: calc(var(--avatar-w) * 1px);
+      border-radius: 50%;
+      background: #cce4ff;
+      overflow: hidden;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      -o-border-radius: 50%;
+    }
+
+    .avatar>img {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    aside>.avatar {
+      margin: calc((var(--avatar-w) / 2) * -1px) auto 0;
+    }
+    section>.title {
+      margin-bottom: .6em;
+      font-size: var(--h2-fz);
+      color: var(--primary);
+    }
+
+    section li {
+      margin: .8em 0;
+    }
+
+    article li {
+      position: relative;
+      margin: .4em 0;
+      padding-left: 1em;
+    }
+
+    article li::before {
+      content: '';
+      position: absolute;
+      left: -0.1em;
+      top: .4em;
+      width: .5em;
+      height: .5em;
+      border-radius: 50%;
+      background: var(--f-color);
+    }
+
+    section>.detail>li>.key {
+      display: inline-block;
+      width: 4em;
+    }
+
+    section li>.val {
+      margin-left: .8em;
+    }
+
+    section p {
+      text-align: justify;
+    }
+
+    section>.line {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: .5em;
+    }
+
+    section>.line a:not(:last-of-type) {
+      margin-right: .8em;
+    }
+
+    .project .line:not(:first-of-type) {
+      margin-top: .8em;
+    }
+
+    section h3 {
+      font-size: var(--h3-fz);
+      color: var(--h3-color);
+    }
+
+    aside {
+      border-right: 1px solid var(--border-color);
+    }
+
+    section .bar {
+      position: relative;
+      display: inline-block;
+      overflow: hidden;
+      width: calc(100% - 4.28em);
+      height: 6px;
+      border-radius: 3px;
+      background-color: var(--body-bg);
+    }
+
+    section .bar::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      height: 100%;
+      background-color: var(--h3-color);
+    }
+
+    section li:nth-child(1) .bar::before {
+      width: 80%;
+    }
+    section li:nth-child(2) .bar::before {
+      width: 50%;
+    }
+    section li:nth-child(3) .bar::before {
+      width: 60%;
+    }
+    section li:nth-child(4) .bar::before {
+      width: 80%;
+    }
+
+    section .icon {
+      vertical-align: middle;
+      width: 24px;
+      height: 24px;
+      margin-right: .3em;
+    }
+
+    article {
+      flex: 1;
+      order: 2;
+    }
+
+    article section:last-of-type {
+      margin-bottom: 3em;
+    }
+
+    article section:first-of-type {
+      margin-top: 3em;
+    }
+
+    @media screen and (max-width: 768px) {
+      header {
+        height: auto;
+        padding-bottom: 1.8em;
+      }
+      header>.avatar {
+        margin-top: 2em;
+        display: block;
+      }
+      section {
+        margin: 2em 1.4em;
+      }
+      header>h1 {
+        margin-top: 1em;
+      }
+      main {
+        flex-direction: column;
+      }
+      aside {
+        width: 100%;
+        order: 3;
+      }
+      aside>.avatar {
+        display: none;
+      }
+      aside section:first-of-type {
+        margin-top: 0;
+      }
+      article section:last-of-type {
+        margin-bottom: 2em;
+      }
+    }
+  </style> 
+</head>
+<body>
+  <div id="resume">
+    <header>
+      <figure class="avatar">
+        <img src="//gw.alicdn.com/tps/TB1W_X6OXXXXXcZXVXXXXXXXXXX-400-400.png" alt="avatar">
+      </figure>
+      <h1>卢望</h1>
+      <ul class="info">
+        <li>前端工程师</li>
+        <li>一年以上工作经验</li>
+        <li>本科</li>
+      </ul>
+    </header>
+    <main>
+      <article>
+        <section>
+          <h2 class="title">关于我</h2>
+          <p>1年前端开发经验，熟悉Vue技术栈，熟悉模块化、工程化开发流程，Webpack的配置小能手，熟练使用ES6写代码，有小程序、移动端开发经验</p>
+        </section>
+        <section>
+          <h2 class="title">教育经历</h2>
+          <div class="line">
+            <h3>东华理工大学 软件学院</h3>
+            <span class="time">2016年~2020年</span>
+          </div>
+        </section>
+        <section class="project">
+          <h2 class="title">项目经验</h2>
+          <div class="line">
+            <h3>vue技术栈实现cnode社区</h3>
+            <div class="link">
+              <a href="#">预览</a>
+              <a href="#">源码</a>
+            </div>
+          </div>
+          <ul>
+            <li>项目介绍： 为什么做这个项目(解决了什么问题)，提供了哪些功能。我在项目中承担的角色，用到了哪些技术，做了过程中遇到了什么问题，你是如何解决的，在代码复用性、体验、性能、ui上做了哪些优化</li>
+            <li>技术栈：vue、vue-router、vuex、element-ui、webpack、es6</li>
+            <li>成果:xxxxx</li>
+          </ul>
+          <div class="line">
+            <h3>vue技术栈实现cnode社区</h3>
+            <div class="link">
+              <a href="#">预览</a>
+              <a href="#">源码</a>
+            </div>
+          </div>
+          <ul>
+            <li>项目介绍： 为什么做这个项目(解决了什么问题)，提供了哪些功能。我在项目中承担的角色，用到了哪些技术，做了过程中遇到了什么问题，你是如何解决的，在代码复用性、体验、性能、ui上做了哪些优化</li>
+            <li>技术栈：vue、vue-router、vuex、element-ui、webpack、es6</li>
+            <li>成果:xxxxx</li>
+          </ul>
+          <div class="line">
+            <h3>vue技术栈实现cnode社区</h3>
+            <div class="link">
+              <a href="#">预览</a>
+              <a href="#">源码</a>
+            </div>
+          </div>
+          <ul>
+            <li>项目介绍： 为什么做这个项目(解决了什么问题)，提供了哪些功能。我在项目中承担的角色，用到了哪些技术，做了过程中遇到了什么问题，你是如何解决的，在代码复用性、体验、性能、ui上做了哪些优化</li>
+            <li>技术栈：vue、vue-router、vuex、element-ui、webpack、es6</li>
+            <li>成果:xxxxx</li>
+          </ul>
+        </section>
+        <section>
+          <h2 class="title">个人评价</h2>
+          <p>1年前端开发经验，熟悉Vue技术栈，熟悉模块化、工程化开发流程，Webpack的配置小能手，熟练使用ES6写代码，有小程序、移动端开发经验</p>
+        </section>
+      </article>
+      <aside>
+        <figure class="avatar">
+          <img src="//gw.alicdn.com/tps/TB1W_X6OXXXXXcZXVXXXXXXXXXX-400-400.png" alt="avatar">
+        </figure>
+        <section>
+          <h2 class="title">个人链接</h2>
+          <ul class="detail">
+            <li>
+              <span class="key">GitHub</span>:
+              <a class="val" href="//github.com/wallleap">github.com/wallleap</a>
+            </li>
+            <li>
+              <span class="key">博客</span>:
+              <a class="val" href="//myblog.wallleap.cn">myblog.wallleap.cn</a>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2 class="title">专业技能</h2>
+          <ul class="detail">
+            <li>
+              <span class="key">HTML</span>
+              <span class="bar"></span>
+            </li>
+            <li>
+              <span class="key">CSS</span>
+              <span class="bar"></span>
+            </li>
+            <li>
+              <span class="key">Node.js</span>
+              <span class="bar"></span>
+            </li>
+            <li>
+              <span class="key">Vue</span>
+              <span class="bar"></span>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2 class="title">联系方式</h2>
+          <ul class="detail">
+            <li>
+              <svg t="1676391315614" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="35590" width="200" height="200"><path d="M742.912 952.064H261.888c-109.184 0-197.76-88.576-197.76-197.76V273.28C64.128 164.096 152.704 75.52 261.888 75.52h481.024c109.184 0 197.76 88.576 197.76 197.76v481.024c0 109.184-88.576 197.76-197.76 197.76z" fill="#00E560" p-id="35591"></path><path d="M335.872 240.896l75.008 105.856c7.552 10.624 8.192 24.832 1.664 36.096l-27.648 47.744c-6.4 11.008-6.016 24.704 1.024 35.2 21.376 31.744 72.192 99.2 142.08 141.824 13.056 7.936 29.184 9.088 43.008 2.688l50.176-23.04c7.424-3.456 16.128-2.944 23.04 1.408l111.616 68.992c11.904 7.296 16.512 22.144 11.136 34.944-10.624 25.728-31.616 64.384-64.384 71.296-49.664 10.496-161.152-15.232-299.52-154.496s-179.2-251.776-164.864-323.328c0 0 22.656-38.656 69.504-54.4 10.368-3.584 21.888 0.384 28.16 9.216z" fill="#FFFFFF" p-id="35592"></path></svg>
+              <span>15500000000</span>
+            </li>
+            <li>
+              <svg t="1676390954922" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4601" width="200" height="200"><path d="M873.472 0H150.528C67.584 0 0 67.584 0 150.528v722.944C0 956.416 67.584 1024 150.528 1024h722.944c82.944 0 150.528-67.584 150.528-150.528V150.528C1024 67.584 956.416 0 873.472 0z m-61.952 656.896c0 41.472-33.792 74.752-74.752 74.752H287.232c-41.472 0-74.752-33.28-74.752-74.752V367.104c0-41.472 33.28-74.752 74.752-74.752h449.024c41.472 0 74.752 33.28 74.752 74.752v289.792z" fill="#4873ED" p-id="4602"></path><path d="M712.192 427.008L512 556.032 311.808 427.008c-9.216-6.144-21.504-3.072-27.648 6.144-6.144 9.216-3.072 21.504 6.144 27.648l210.944 135.68c3.072 2.048 7.168 3.072 10.752 3.072 3.584 0 7.68-1.024 10.752-3.072L733.696 460.8a20.48 20.48 0 0 0 6.144-27.648 20.48 20.48 0 0 0-27.648-6.144z" fill="#4873ED" p-id="4603"></path></svg>
+              <span>email@domain.com</span>
+            </li>
+            <li>
+              <svg t="1676391353618" class="icon" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8861" width="200" height="200"><path d="M537.622015 410.308169" fill="#272636" p-id="8862"></path><path d="M316.914611 320.110779c-19.899085 0-39.991474 13.179462-39.991474 33.147073 0 19.835673 20.03 33.141959 39.991474 33.141959 19.960451 0 33.141959-13.374812 33.141959-33.210485C350.055547 333.226829 336.811651 320.110779 316.914611 320.110779L316.914611 320.110779zM502.466215 386.335376c20.03 0 33.210485-13.3114 33.210485-33.141959 0-19.967611-13.180485-33.147073-33.210485-33.147073-19.835673 0-39.732712 13.11605-39.732712 33.147073C462.733503 373.023976 482.693954 386.335376 502.466215 386.335376L502.466215 386.335376zM588.659445 512.512921c-13.180485 0-26.491884 13.180485-26.491884 26.428472 0 13.369698 13.3114 26.484725 26.491884 26.484725 20.087275 0 33.208439-13.11605 33.208439-26.484725C621.867884 525.693406 608.810133 512.512921 588.659445 512.512921L588.659445 512.512921zM734.604138 512.512921c-13.11605 0-26.427449 13.242874-26.427449 26.48677 0 13.374812 13.3114 26.490861 26.427449 26.490861 19.962497 0 33.205371-13.11605 33.205371-26.490861C767.746096 525.693406 754.503223 512.512921 734.604138 512.512921L734.604138 512.512921zM827.32471 1.022774 197.701132 1.022774c-108.570496 0-196.678359 88.113999-196.678359 196.678359l0 629.618463c0 108.57561 88.044451 196.680404 196.678359 196.680404L827.32471 1024c96.745187 0 177.243613-69.948516 193.678563-161.95826l3.06423-160.683884L1024.067503 197.701132C1024.067503 89.130636 935.958618 1.022774 827.32471 1.022774L827.32471 1.022774zM403.09966 658.396247c-33.141959 0-59.695209-6.656211-92.842282-13.242874l-92.710344 46.453358 26.554273-79.726232c-66.41381-46.452336-106.153682-106.217094-106.153682-179.033467 0-126.173454 119.396556-225.476598 265.215447-225.476598 130.4016 0 244.548259 79.404059 267.580099 186.194928-8.571866-0.963453-17.081343-1.538252-25.589798-1.538252-125.989355 0-225.35591 93.995971-225.419322 209.801568 0 19.393835 3.006955 37.947972 8.19344 55.667527-8.256852 0.516501-16.507567 0.894927-24.826809 0.894927L403.100682 658.396247zM794.10502 751.365353l20.03 66.2921-72.74887-39.934199c-26.490861 6.656211-53.170936 13.247988-79.530882 13.247988-126.177545 0-225.480689-86.122659-225.480689-192.334639 0-106.021744 99.303144-192.404187 225.480689-192.404187 119.138817 0 225.287384 86.382443 225.287384 192.404187C887.078217 658.396247 847.408917 711.378993 794.10502 751.365353L794.10502 751.365353zM794.10502 751.365353" fill="#272636" p-id="8863"></path></svg>
+              <span>wechat</span>
+            </li>
+            <li>
+              <svg t="1676390712154" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2354" width="200" height="200"><path d="M849.170732 0c97.404878 0 174.829268 77.42439 174.829268 174.829268v674.341464c0 97.404878-77.42439 174.829268-174.829268 174.829268H174.829268c-97.404878 0-174.829268-77.42439-174.829268-174.829268V174.829268c0-97.404878 77.42439-174.829268 174.829268-174.829268h674.341464zM514.497561 249.756098h-4.995122c-114.887805 2.497561-209.795122 94.907317-209.795122 207.297561v7.492682c2.497561 67.434146 42.458537 144.858537 104.897561 224.780488 24.97561 29.970732 49.95122 57.443902 77.42439 82.419512l14.985366 12.487805 9.990244 7.492683 7.492683 7.492683 7.492683-7.492683c34.965854-32.468293 69.931707-67.434146 99.902439-102.4 64.936585-77.42439 102.4-154.84878 104.897561-224.780488v-7.492682c0-112.390244-92.409756-204.8-207.297561-207.297561h-4.995122z m0 99.902439c59.941463 0 107.395122 47.453659 107.395122 107.395122s-47.453659 107.395122-107.395122 107.395121-107.395122-47.453659-107.395122-107.395121 47.453659-107.395122 107.395122-107.395122z m0 44.956097c-34.965854 0-59.941463 27.473171-59.941463 59.941464s27.473171 59.941463 59.941463 59.941463c34.965854 0 59.941463-27.473171 59.941463-59.941463s-27.473171-59.941463-59.941463-59.941464z" fill="#FC9637" p-id="2355"></path></svg>
+              <span>江西南昌</span>
+            </li>
+          </ul>
+        </section>
+      </aside>
+    </main>
+  </div>
+</body>
+</html>
